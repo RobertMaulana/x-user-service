@@ -2,7 +2,6 @@ package users
 
 import (
 	"database/sql"
-	"fmt"
 	"github.com/RobertMaulana/x-comment-service/datasource/postgre/comments_db"
 	"github.com/RobertMaulana/x-comment-service/logger"
 	"github.com/RobertMaulana/x-user-service/query"

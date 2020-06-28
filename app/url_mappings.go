@@ -7,7 +7,7 @@ import (
 
 func mapUrls() {
 	// Kubernetes need to check health pod using this open public endpoint
-	router.GET("/ping", ping.Ping)
+	router.GET("/health", ping.Ping)
 
 	// Rest route
 	xendit := router.Group("/orgs")

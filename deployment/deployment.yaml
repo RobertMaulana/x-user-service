@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: user-service
+  labels:
+    app: user-service
+spec:
+  selector:
+    matchLabels:
+      app: user-service
+  strategy:
+    type: RollingUpdate
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: user-service
+        tier: user-service
+        role: rolling-update
+    spec:
+      containers:
+        - name: user-service
+          image: user-service:latest
+          imagePullPolicy: Never
+          volumeMounts:
+            - name: secret
+              mountPath: "/etc/secret"
+              readOnly: true
+          ports:
+            - containerPort: 8081
+              name: user-rest
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8081
+            initialDelaySeconds: 6
+            periodSeconds: 10
+      volumes:
+        - name: secret
+          secret:
+            secretName: user-svc-secret
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: default
+  name: user-svc
+  labels:
+    app: user-svc
+spec:
+  type: ClusterIP
+  ports:
+    - name: user-svc-rest
+      port: 8081
+      targetPort: 8081
+  selector:
+    app: user-service
+    tier: user-service
