@@ -28,7 +28,7 @@ User service will connect with Comment service through inter-communication using
 
 ### Api Doc
 - HOST: `localhost:8081`
-- Get all comments
+- Get all organization members
     - description: in this endpoint, user-service will get related data by organization to comment-service using GRPC
     - method: `GET`
     - organization_name: `xendit`
