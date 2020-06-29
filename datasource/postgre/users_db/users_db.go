@@ -32,8 +32,8 @@ func Connect() {
 	}
 	Database = db
 	Client = db.DB()
-	//autoCreate := os.Getenv("DB_AUTO_CREATE")
-	if true {
+	autoCreate := os.Getenv("DB_AUTO_CREATE")
+	if autoCreate == "true" {
 		fmt.Println("Dropping and recreating all tables...")
 		usersSchema.AutoMigrate(db)
 		fmt.Println("All tables recreated successfully...")

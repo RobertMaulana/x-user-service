@@ -27,9 +27,9 @@ func AutoMigrate(database *gorm.DB) {
 	Database = database
 
 	// Drop all the tables
-	//database.DropTableIfExists(
-	//	Users{},
-	//)
+	database.DropTableIfExists(
+		Users{},
+	)
 
 	// Auto migrate
 	database.AutoMigrate(
