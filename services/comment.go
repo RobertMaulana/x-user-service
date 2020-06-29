@@ -25,7 +25,7 @@ func (s *commentService) GetOrganizationMembers(client comment.CommentsClient, d
 	defer cancel()
 	resp, err := client.GetOrganizationMembers(ctx, data)
 	if err != nil {
-		fmt.Printf("err ====> %#v", err)
+		fmt.Printf("err ====> %#v", err.Error())
 		logger.Info("unable to get data from other services")
 		return nil, err
 	}
