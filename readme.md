@@ -27,7 +27,7 @@ User service will connect with Comment service through inter-communication using
 - In this deployment command, will execute build docker image, cleanup existing deployment & pod service, and deploy it to minikube
 
 ```$ kubectl port-forward service/user-svc 8081:8081```
-- After pod is deployed on minikube, need to forward the port using above command because by default service port is not accesible by public. Here I am using clusterIp, to make it similar like in production microservices. After that service will serve and can access using ``localhost:8081``
+- After pod is deployed on minikube, need to forward the port using above command because by default service port is not accesible by public. Here is using clusterIp, to make it similar like in production microservices. After that service will serve and can access using ``localhost:8081``
 
 ### Api Doc
 - HOST: `localhost:8081`
