@@ -10,6 +10,7 @@ import (
 
 func CommentService() comment.CommentsClient {
 	port := os.Getenv("COMMENT_SERVICE")
+	fmt.Printf("port comment service %#v", port)
 	conn, err := grpc.Dial(port, grpc.WithInsecure())
 	if err != nil {
 		log.Fatal("could not connect to", port, err)
